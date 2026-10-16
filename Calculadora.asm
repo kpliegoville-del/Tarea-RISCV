@@ -2,7 +2,7 @@
 .globl main
 
 main:
-    # Inicio de las variables
+    # Inicializacion de variables
     addi s0, zero, 0      # selector = 0
     addi s1, zero, 5      # a = 5
     addi s2, zero, 3      # b = 3
@@ -18,5 +18,20 @@ main:
     addi t0, zero, 3
     beq s0, t0, caso_multiplica
 
-    # Caso por defecto
     jal zero, caso_and
+
+caso_suma:
+    jal zero, fin
+
+caso_resta:
+    jal zero, fin
+
+caso_multiplica:
+    jal zero, fin
+
+caso_and:
+    jal zero, fin
+
+fin:
+    addi a7, zero, 10
+    ecall
