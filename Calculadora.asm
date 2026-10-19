@@ -20,17 +20,34 @@ main:
 
     jal zero, caso_and
 
+
 caso_suma:
+    # Llamar a la funcion suma
+    jal ra, suma
     jal zero, fin
 
 caso_resta:
+    # Llamar a la funcion resta
+    jal ra, resta
     jal zero, fin
+
 
 caso_multiplica:
     jal zero, fin
 
 caso_and:
     jal zero, fin
+
+
+# Funcion suma
+suma:
+    add s3, s1, s2
+    jalr zero, 0(ra)
+
+# Funcion resta
+resta:
+    sub s3, s1, s2
+    jalr zero, 0(ra)
 
 fin:
     addi a7, zero, 10
