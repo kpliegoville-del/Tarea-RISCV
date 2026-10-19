@@ -31,11 +31,14 @@ caso_resta:
     jal ra, resta
     jal zero, fin
 
-
 caso_multiplica:
+    # Llamar a multiplicacion
+    jal ra, multiplica
     jal zero, fin
 
 caso_and:
+    # Llamar a AND bitwise
+    jal ra, andBitwise
     jal zero, fin
 
 
@@ -47,6 +50,16 @@ suma:
 # Funcion resta
 resta:
     sub s3, s1, s2
+    jalr zero, 0(ra)
+
+# Funcion multiplicacion
+multiplica:
+    mul s3, s1, s2
+    jalr zero, 0(ra)
+
+# Funcion AND bitwise
+andBitwise:
+    and s3, s1, s2
     jalr zero, 0(ra)
 
 fin:
