@@ -27,11 +27,17 @@ for:
     lw t0, 0(s3)
     lw t1, 0(s4)
 
-    # Multiplicar los elementos
-    mul t2, t0, t1
 
-    # Acumular resultado
-    add s1, s1, t2
+    # Paramtros funcion
+    addi a0, t0, 0
+    addi a1, t1, 0
+
+    # Llamar a ProductFunction
+    jal ra, ProductFunction
+
+    # Acumular el resultado
+    add s1, s1, a0
+
 
     # Avanzar al siguiente elemento
     addi s3, s3, 4
@@ -42,7 +48,20 @@ for:
     jal zero, for
 
 fin_for:
+    # Guardar resultado en memoria
+    lui t3, 0x10010
+    sw s1, 72(t3)
+
     # Finalizar programa
     addi a7, zero, 10
     ecall
+
+# Funcion ProductFunction
+ProductFunction:
+    # Multiplicar los parametros
+    mul a0, a0, a1
+
+    # Regresar al ciclo
+    jalr zero, 0(ra)
+
 
