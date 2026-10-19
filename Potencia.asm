@@ -1,3 +1,7 @@
+.data
+    # Variable para almacenar potencia
+    resultado: .word 0
+
 .text
 .globl main
 
@@ -9,8 +13,12 @@ main:
     # Llamar a la funcion
     jal ra, Potencia
 
-    # Guardar resultado
+    # Guardar resultado en registro
     addi s0, a0, 0
+
+    # Guardar resultado en memoria
+    lui t0, 0x10010
+    sw s0, 0(t0)
 
     # Finalizar programa
     addi a7, zero, 10
