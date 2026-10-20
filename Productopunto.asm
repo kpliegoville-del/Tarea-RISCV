@@ -63,5 +63,3 @@ ProductFunction:
 
     # Regresar al ciclo
     jalr zero, 0(ra)
-
-
